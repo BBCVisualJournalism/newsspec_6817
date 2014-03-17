@@ -1,0 +1,30 @@
+    <div class="footer"></div>
+    <script type="text/javascript">
+        if (browser == "html5") {
+            var done = false,
+                script = document.createElement('script'),
+                jqueryVersion = (browser === 'html5') ? 'jquery-2.1.0' : 'jquery-1.9.1';
+            script.src = "<%= pathStatic %>/<%= vocab_dir %>/js/lib/vendors/require/require-2.1.0.js";
+            script.type = "text/javascript";
+            script.onload = script.onreadystatechange = function() {
+                if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
+                    done = true;
+                    require.config({                    
+                        urlArgs: 'v=<%= version %>',
+                        baseUrl: "<%= pathStatic %>/<%= vocab_dir %>/js/",
+                        paths: {
+	                            'pubsub': './lib/vendors/jquery/pubsub',
+								'istats': './lib/vendors/istats/istats',
+								'jquery': './lib/vendors/jquery/' + jqueryVersion
+                        }                     
+                    });
+                    require(['<%= pathStatic %>/<%= vocab_dir %>/js/app.js', "http://news.bbcimg.co.uk/news/special/shared/translations/country_names/v1/<%= vocab_dir %>.js"], function (app, countryNames) {
+                            app.init('<%= storyPageUrl %>', countryNames);
+                    });
+                }
+            }
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>

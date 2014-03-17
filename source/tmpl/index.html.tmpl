@@ -1,0 +1,117 @@
+<%= include('includes/top.tmpl') %>
+
+    <div class="main">
+
+    	<div class="interactive"><%= interactive %></div>
+
+		<div class="text_container">
+			<p class="map_heading"><%= CPS_map_title %></p>
+			<p><%= maptext1 %></p>
+			<p><%= maptext2 %></p>
+			<p class="js_cta"><%= maptext3 %></p>
+		</div>
+
+		<div id="map_nav_container" class="map_nav_container">
+			<div class="map_buttons_container">
+				<p class="filter_by"><%= filter_by %></p>
+				<ul id="map_buttons_list" class="map_buttons_list">
+					<li id="death_penalty_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category1 %></span>
+					</li>
+					<li id="imprisonment_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category2 %></span>
+					</li>
+					<li id="anti_law_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category3 %></span>
+					</li>
+					<li id="age_consent_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category4 %></span>
+					</li>
+					<li id="legal_acts_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category5 %></span>
+					</li>
+					<li id="anti_discrimination_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category6 %></span>
+					</li>
+					<li id="marriage_subsitute_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category7 %></span>
+					</li>
+					<li id="marriage_btn" class="map_button active">
+						<div class="map_button__checkbox"></div>
+						<span><%= category8 %></span>
+					</li>
+				</ul>
+				<select id="map_select_list" class="map_select_list">
+					<option value="all">All</option>
+					<option value="death_penalty"><%= category1 %></option>
+					<option value="imprisonment"><%= category2 %></option>
+					<option value="anti_law"><%= category3 %></option>
+					<option value="age_consent"><%= category4 %></option>
+					<option value="legal_acts"><%= category5 %></option>
+					<option value="anti_discrimination"><%= category6 %></option>
+					<option value="marriage_subsitute"><%= category7 %></option>
+					<option value="marriage"><%= category8 %></option>
+				</select>
+			</div>
+			<div id="map_cta1"><p class="ns__click_zoom2"><%= mapcta1 %></p></div>
+			<div class="viewport_container img_map_container">
+				<div id="map_container" class="map_container active">
+					<%
+						var imgSrc = pathStatic + '/' + vocab_dir + '/img/640/overall_map.gif';
+					%>
+					<script type="text/javascript">
+					if (browser == "html5") {
+						document.write('<di' + 'v class="delayed-image-load" data-src="<%= imgSrc %>" data-width="320" style="width: 100%;"></di' + 'v>');				
+					}
+					else {
+						document.write('<im' + 'g src="<%= imgSrc %>" style="width: 100%; display: block;" />')
+					}
+					</script>
+					<noscript>
+						<img src="<%= imgSrc %>" style="width: 100%; display: block;" />
+					</noscript>
+
+				</div>
+			</div>
+			<!--div class="ns__key_legend ns__top_version">
+				<span class="ns__key_text"><%= key_heading1 %></span>
+				<span class="ns__key_block ns__key_1"></span>
+				<span class="ns__key_block ns__key_2"></span>
+				<span class="ns__key_block ns__key_3"></span>
+				<span class="ns__key_block ns__key_4"></span>
+				<span class="ns__key_block ns__key_5"></span>
+				<span class="ns__key_block ns__key_6"></span>
+				<span class="ns__key_block ns__key_7"></span>
+				<span class="ns__key_block ns__key_8"></span>
+				<span class="ns__key_text ns__wide_gap"><%= key_heading2 %></span>
+				<span class="ns__key_block ns__key_9"></span><%= key_heading3 %>
+			</div-->
+
+			<div class="ns2-key-legend">
+				<ul>
+					<li><%= key_heading1 %> <span class="ns__key_block ns__key_1"></span><span class="ns__key_block ns__key_2"></span><span class="ns__key_block ns__key_3"></span><span class="ns__key_block ns__key_4"></span><span class="ns__key_block ns__key_5"></span><span class="ns__key_block ns__key_6"></span><span class="ns__key_block ns__key_7"></span><span class="ns__key_block ns__key_8"></span> <%= category8 %>
+					</li>
+					<li><span class="ns__key_block ns__key_9"></span> <%= key_heading3 %></li>
+					<li><span class="ns__key_block ns__key_10"></span> <%= key_heading4 %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="hidden_vocabs">
+			<p id="popuptext1"><%= popuptext1 %><p>
+			<p id="popuptext2"><%= popuptext2 %><p>
+			<p id="mapcta2"><%= mapcta2 %><p>
+		</div>
+
+
+    </div>
+
+
+
+<%= include('includes/bottom.tmpl') %>

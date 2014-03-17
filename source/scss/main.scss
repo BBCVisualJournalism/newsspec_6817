@@ -1,0 +1,566 @@
+$anchor-active: #f00;
+
+@import "news_special/defaults";
+
+/* TEMP HACK for Kosovo */
+#map_container_KOS {
+	fill: #ededed;
+}
+
+
+body{
+	font-family: Arial, Helmet, Freesans, sans-serif;
+}
+
+.main img {
+	width: 100%;
+}
+
+.main {
+	padding-bottom: 20px;
+}
+
+/* DEFAULT NON-JS */
+
+.interactive {
+	display: none;
+}
+
+.text_container {
+	clear: left;
+}
+
+.map_buttons_container {
+	display: none;
+}
+ .hidden_vocabs{
+ 	display: none;
+ }
+.js_cta {
+	display: none;
+}
+#map_cta1{
+	display: none;
+}
+
+.map_heading{
+	font-weight: bold;
+	margin: 0 0 1em;
+}
+.map_select_list { width: 100%;  display : none; }
+.map_buttons_list, .filter_by { display : none; }
+
+/* RESPONSIVE MEDIA QUERY */
+/* NB map_select_list and map_button_list are toggled on 780px..same as value function getBrowserWidth() in controller.js*/
+@include respondMinMax (650px, false) { // 780
+	.map_select_list { display: none; }
+	.map_buttons_list, .filter_by { display: block; }
+}
+@include respondMinMax (false, 649px) { // 779
+	.map_select_list { display: block; }
+	.map_buttons_list, .filter_by { display : none; }
+}
+
+
+@include respondMinMax (650px, false) {
+   	.map_button span {
+		font-size: 15px;
+	}
+}
+
+/*@include respondMinMax (false, 779px) {
+	.map_buttons_container {
+		display: none;
+	}
+	.text_container {
+		float:none;
+	}
+	.map_nav_container {
+		float:none;
+	}
+
+}*/
+
+@include respondMinMax (650px, 975px) {
+   	.map_button span {
+		font-size: 15px;
+	}
+	.text_container {
+		float:left;
+		width: 32%;
+		margin-right: 2%;
+	}
+	.map_nav_container {
+		float:left;
+		width: 66%;
+		position: relative;
+	}
+	.map_container {
+		position: relative;
+	}
+	.viewport_container {
+		position: relative;
+	}
+}
+
+@include respondMinMax (976px, false) {
+   	.map_button span {
+		font-size: 15px;
+	}
+	.text_container {
+		float:left;
+		width: 312px;
+		margin-right: 16px;
+	}
+	.map_nav_container {
+		float:left;
+		width: 642px;
+		position: relative;
+	}
+	.map_container {
+		position: relative;
+	}
+	.viewport_container {
+		position: relative;
+	}
+}
+/* END OF MEDIA QUERY */
+
+
+
+
+/* KEY LEGEND */
+.ns__key_legend {
+	display: block;
+	margin: 8px 0 0 0;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #CCC;
+	p {
+		font-weight: bold;
+		margin-bottom: 4px;
+	}
+	.ns__key {
+		font-weight: normal;
+	}
+
+	.ns__key_block {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		margin: 0;
+		top: 3px;
+		position: relative;
+	}
+}
+.ns2-key-legend {
+	overflow: hidden;
+	zoom: 1;
+}
+.ns2-key-legend ul {
+	list-style: none;
+	margin-top: 0;
+	margin-bottom: 2em;
+	padding: 0;
+	overflow: hidden;
+	zoom: 1;
+}
+.ns2-key-legend li {
+	padding-top: 0.5em;
+}
+.ns2-key-legend .ns__key_block {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	top: 3px;
+	position: relative;
+}
+
+/*
+@include respondMinMax (590px, 779px) {
+	.ns2-key-legend li {
+		float: left;
+		width: 50%;
+	}
+}
+
+@include respondMinMax (976px, false) {
+	.ns2-key-legend li {
+		float: left;
+		width: 50%;
+	}
+}
+
+@include respondMinMax (590px, 779px) {
+	html[lang="ar"],
+	html[lang="ru"] {
+		.ns2-key-legend li {
+			float: none;
+			width: 100%;
+		}
+	}
+
+}
+*/
+
+.ns__click_zoom2 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+/* COLOURS
+Death penalty: #cc3333
+Imprisonment: #f7983
+Law against gay expression: #f8b519
+Age of consentdifferent: #f6d173
+Homosexual acts legal: #cad8c9
+Laws against discrimination: #b4c8d5
+Marriage substitute: #768892
+Marriage: #576c78
+Multiple cases: #8b528f
+*/
+.ns__key_1 { background-color: #cc3333; }
+.ns__key_2 { background-color: #f79833; }
+.ns__key_3 { background-color: #f8b519; }
+.ns__key_4 { background-color: #f6d173; }
+.ns__key_5 { background-color: #cad8c9; }
+.ns__key_6 { background-color: #b4c8d5; }
+.ns__key_7 { background-color: #768892; }
+.ns__key_8 { background-color: #576c78; }
+.ns__key_9 { background-color: #8b528f; }
+.ns__key_10 { background-color: #ededed; }
+
+
+/* check buttons selected colour */
+
+.js #death_penalty_btn.nav_selected .map_button__checkbox {
+	background-color: #cc3333;
+	background: rgba(204, 51, 51, 0.9);
+}
+
+.js #imprisonment_btn.nav_selected .map_button__checkbox {
+	background-color: #f79833;
+	background: rgba(247, 152, 51, 0.9);
+}
+
+.js #anti_law_btn.nav_selected .map_button__checkbox {
+	background-color: #f8b519;
+	background: rgba(248, 181, 25, 0.9);
+}
+
+.js #age_consent_btn.nav_selected .map_button__checkbox {
+	background-color: #f6d173;
+	background: rgba(246, 209, 115, 0.9);
+}
+
+.js #legal_acts_btn.nav_selected .map_button__checkbox {
+	background-color: #cad8c9;
+	background: rgba(202, 216, 201, 0.9);
+}
+
+.js #anti_discrimination_btn.nav_selected .map_button__checkbox {
+	background-color: #b4c8d5;
+	background: rgba(180, 200, 213, 0.9);
+}
+
+.js #marriage_subsitute_btn.nav_selected .map_button__checkbox {
+	background-color: #768892;
+	background: rgba(118, 136, 146, 0.9);
+}
+
+.js #marriage_btn.nav_selected .map_button__checkbox {
+	background-color: #576c78;
+	background: rgba(87, 108, 120, 0.9);
+}
+
+
+
+
+
+
+
+
+
+
+.js{
+
+	.interactive {
+		background: black;
+		color: white;
+		display: block;
+		float: left;
+		margin-bottom: 1em;
+		padding: 0.5em;
+	}
+
+	@include respondMinMax (780px, false) {
+		#map_cta1{
+			display: block;
+		}
+	}
+
+	/*.map_container {
+	    width: 100%;
+	    display: block;
+	    height: auto;
+	    position: relative;
+	    padding-top: 100%;
+	}
+
+	svg {
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	}
+	*/
+
+	/* style country borders on SVG map */
+	.subunit-boundary {
+	  fill: none;
+	  stroke: #ffffff;
+	  stroke-width: 1px;
+	}
+
+
+	/* BUTTONS FOR MAP */
+	.map_buttons_container {
+		/*width: 100%;*/
+		margin: 0;
+		padding: 0;
+		display: block;
+		overflow: auto;
+	}
+
+	.filter_by {
+		font-weight: bold;
+		font-size: 14px;
+		margin: 0.2em 0 1em;
+	}
+
+	.map_buttons_container ul {
+		overflow: auto;
+		margin: 0 0 1em;
+		padding: 0;
+	}
+
+	.map_button {
+		list-style: none;
+		display: block;
+		width: 32%;
+		height: 44px;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		float: left;
+/*		background: rgb(85,85,85);
+		background: rgba(85,85,85,0.9);*/
+		margin-bottom: 8px;
+		margin-right: 1%;
+	}
+
+	@include respondMinMax (880px, false) {
+		.map_button {
+			width: 24%;
+		}
+	}
+
+	.map_button__checkbox {
+		border: 1px solid;
+		float: left;
+		height: 0.6em;
+		margin-top: 0.15em;
+		margin-right: 0.25em;
+		position: relative;
+		width: 0.6em;
+	}
+	.map_button__checkbox:after {
+		display: block;
+		content: "";
+		border: 1px solid white;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+	}
+
+	.nav_selected .map_button__checkbox {
+		background-color: #D1700E;
+		background: rgba(209,112,14,0.9);
+	}
+
+	.map_button:first-child {
+		margin-left: 0;
+	}
+
+	.map_button span {
+		display: block;
+		float: left;
+		// color: white;
+		font-size: 14px;
+		width: 85%;
+	}
+
+	.reset {
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: 1px solid #505050;
+		padding: 4px;
+		color: #FFFFFF;
+		background-color: #505050;
+		cursor: pointer;
+		font-weight: normal;
+		display: none;
+	}
+
+	/* info box for map */
+	.info_box {
+		position: absolute;
+		background-color: #ffffff;
+		color: black;
+		padding: 4px;
+		left: 0;
+		bottom: 0;
+		display: none;
+		border: 1px solid #505050;
+		padding: 8px;
+	}
+
+
+	.map_info_box_name {
+		font-weight: bold;
+		color: black;
+		margin-bottom: 8px;
+	}
+	.map_info_box_val {
+		font-weight: normal;
+		color: black;
+	}
+	.map_info_box_val p {
+		margin: 0;
+		padding:0;
+		margin-bottom: 8px;
+	}
+	.ns__key_block {
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		margin: 0;
+		top: 0px;
+		position: relative;
+	}
+
+	.popup_extra_text{
+		margin: 0;
+		padding:0;
+		color: #666666;
+		font-size: 14px;
+	}
+
+	.ns__interactive_badge span {
+		display: inline-block;
+		text-transform: uppercase;
+		color: #FFFFFF;
+		background-color: #000000;
+		padding: 4px;
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+
+}
+
+html[lang="ar"],
+html[lang="fa"],
+html[lang="ps"],
+html[lang="ur"] {
+
+    .main {
+
+		.text_container {
+			clear: left;
+		}
+
+    }
+
+    @include respondMinMax (650px, 975px) {
+		.text_container {
+			float:right;
+		}
+		.map_nav_container {
+			float:right;
+		}
+	}
+
+	@include respondMinMax (976px, false) {
+		.text_container {
+			float:right;
+		}
+		.map_nav_container {
+			float:right;
+		}
+	}
+
+	/*
+	@include respondMinMax (590px, 779px) {
+		.ns2-key-legend li {
+			float: right;
+		}
+	}
+
+	@include respondMinMax (976px, false) {
+		.ns2-key-legend li {
+			float: right;
+		}
+	}
+	*/
+
+	.js{
+
+		.interactive {
+			float: right;
+		}
+
+		.map_button {
+			float: right;
+			margin-left: 1%;
+		}
+
+		.map_button__checkbox {
+			float: right;
+			margin-left: 0.25em;
+		}
+
+		.map_button:first-child {
+			margin-right: 0;
+		}
+
+		.map_button span {
+			float: right;
+		}
+
+		.reset {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		/* info box for map */
+		.info_box {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+
+	}
+
+
+}
+
+
+
+
