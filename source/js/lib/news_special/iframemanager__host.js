@@ -75,8 +75,6 @@
                 this.data.setup &&
                 (!this.iframeInstructionsRan)
             ) {
-                eval("var func = " + this.data.setup);
-                func();
                 this.iframeInstructionsRan = true;
             }
         },
